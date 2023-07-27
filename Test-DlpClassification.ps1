@@ -28,6 +28,31 @@ Function Test-DlpClassification {
             [string]$Label,
             [string]$UPN
         )
+        if ($policyRuleId -eq "6abb5bf8-7ae6-4f97-9c9a-9fcb60c0f230:6b2c3c43-f1fd-4949-97e8-f93e3c3a91e4"){
+            Write-Host "The default Policy is asscociated with this file this may indicate a classification issue"
+
+            if ($Label -eq "") {
+                # Code to be executed if $Label is null
+                Write-Host "DLP did not find any Label associated with this file"
+                if ($SITs -eq "") {
+                    # Code to be executed if $SITs is null
+                    Write-Host "DLP did not find any SITs associated with this file."
+                    
+                }
+                else {
+                    # Code to be executed if $SITs is not null
+                    Write-Host "The following SITs $SITs were found in the file please confirm they are a condition for the expected policy."
+                }
+            }
+            else {
+                # Code to be executed if $Label is not null
+                Write-Host "The Label $Label is associated with this file please validate it is associated with the expected Policy."
+            }
+        }
+        Else {
+
+        }
+
     
         # Your logic for processing the parameters and fetching data goes here
         # For demonstration purposes, let's just output the provided parameters
@@ -38,8 +63,11 @@ Function Test-DlpClassification {
         Write-Output "encryptionStatus: $encryptionStatus"
         Write-Output "Labels: $Labels"
         Write-Output "UPN: $UPN"
+
+
+
     }
     
     # Example usage of the function:
-    # Troubleshoot-Dlp -policyRuleId "123456" -machineId "ABC123" -SHA1 "A1B2C3" -SITs 5 -encryptionStatus $true -Labels @("Label1", "Label2") -UPN "user@example.com"
+    Test-DlpClassification -policyRuleId "6abb5bf8-7ae6-4f97-9c9a-9fcb60c0f230:6b2c3c43-f1fd-4949-97e8-f93e3c3a91e4" -machineId "ABC123" -SHA1 "A1B2C3" -SITs "ssn" -encryptionStatus $false -Label "Label1" -UPN "user@example.com"
     
