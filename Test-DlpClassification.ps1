@@ -32,24 +32,24 @@ Function Test-DlpClassification {
             Write-Host "The default Policy is asscociated with this file this may indicate a classification issue"
 
             if ($Label -eq "") {
-                # Code to be executed if $Label is null
+                # Code to be executed if $Label is empty
                 Write-Host "DLP did not find any Label associated with this file"
                 if ($SITs -eq "") {
-                    # Code to be executed if $SITs is null
+                    # Code to be executed if $SITs is empty
                     Write-Host "DLP did not find any SITs associated with this file."
                     
                 }
                 else {
-                    # Code to be executed if $SITs is not null
+                    # Code to be executed if $SITs is not empty
                     Write-Host "The following SITs $SITs were found in the file please confirm they are a condition for the expected policy."
                 }
             }
             else {
-                # Code to be executed if $Label is not null
+                # Code to be executed if $Label is not empty
                 Write-Host "The Label $Label is associated with this file please validate it is associated with the expected Policy."
             }
         }
-        Else {
+        else {
 
         }
 
@@ -69,5 +69,5 @@ Function Test-DlpClassification {
     }
     
     # Example usage of the function:
-    Test-DlpClassification -policyRuleId "6abb5bf8-7ae6-4f97-9c9a-9fcb60c0f230:6b2c3c43-f1fd-4949-97e8-f93e3c3a91e4" -machineId "ABC123" -SHA1 "A1B2C3" -SITs "ssn" -encryptionStatus $false -Label "Label1" -UPN "user@example.com"
+    #Test-DlpClassification -policyRuleId "6abb5bf8-7ae6-4f97-9c9a-9fcb60c0f230:6b2c3c43-f1fd-4949-97e8-f93e3c3a91e4" -machineId "ABC123" -SHA1 "A1B2C3" -SITs "ssn" -encryptionStatus $false -Label "Label1" -UPN "user@example.com"
     
