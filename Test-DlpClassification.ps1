@@ -5,7 +5,7 @@ Function Test-DlpClassification {
      
      
     .NOTES
-        Name: Get-Escalation
+        Name: Test-DlpClassification
         Author: pacronan
         Version: 1.0
         DateCreated: 2023-Jul-27
